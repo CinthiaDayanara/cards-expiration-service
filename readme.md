@@ -61,9 +61,3 @@ curl -X GET http://localhost:5011/expiration/active
 curl -X GET http://localhost:5011/expiration/expired
 ```
 
-## ⏳ Automated Expiration Handling
-This service runs a **cron job every 5 minutes** to check for expired cards and update their status.
-
-## 📄 License
-This project is licensed under the MIT License.
-

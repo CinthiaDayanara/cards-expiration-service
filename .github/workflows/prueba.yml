@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: dayanara1898/update-courses:latest
+          tags: dayanara1898/cards-expiration-service:latest

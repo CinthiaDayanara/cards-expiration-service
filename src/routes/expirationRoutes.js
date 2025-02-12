@@ -6,6 +6,6 @@ const router = express.Router();
 router.get("/", getCards);
 
 // Ruta para eliminar una tarjeta
-router.delete("/:id", deleteCard);  // :id es el parámetro que recibe el ID de la tarjeta a eliminar
+router.delete("/:id", deleteCard);  // :id es el parámetro que recibe el ID de la tarjeta 
 
 module.exports = router;

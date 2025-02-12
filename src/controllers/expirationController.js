@@ -1,27 +1,19 @@
-const { Op } = require("sequelize");
-const Card = require("../models/Card");
+const { Card } = require("../models/Card");
 
-// Obtener tarjetas activas
-exports.getActiveCards = async (req, res) => {
+exports.deleteCard = async (req, res) => {
   try {
-    const now = new Date();
-    const activeCards = await Card.findAll({ 
-      where: { due_date: { [Op.gt]: now }, status: "active" } 
-    });
-    res.json(activeCards);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+    const cardId = req.params.id; // Obtener el ID de la tarjeta desde los parámetros de la ruta
 
-// Obtener tarjetas expiradas
-exports.getExpiredCards = async (req, res) => {
-  try {
-    const expiredCards = await Card.findAll({ 
-      where: { status: "expired" } 
-    });
-    res.json(expiredCards);
+    const card = await Card.findByPk(cardId);
+
+    if (!card) {
+      return res.status(404).json({ error: "Tarjeta no encontrada" });
+    }
+
+    await card.destroy(); // Eliminar la tarjeta
+
+    res.status(200).json({ message: "Tarjeta eliminada correctamente" });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: "Error al eliminar la tarjeta" });
   }
 };

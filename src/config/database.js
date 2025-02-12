@@ -1,21 +1,12 @@
 const { Sequelize } = require("sequelize");
 
-require("dotenv").config();
-
-if (!process.env.DATABASE_URL) {
-  console.error("❌ ERROR: DATABASE_URL no está definida en .env");
-  process.exit(1);
-}
-
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: "postgres",
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    }
-  },
-  logging: false,
+const sequelize = new Sequelize({
+  dialect: "postgres", // O "postgres", "sqlite", según el tipo de base de datos
+  host: process.env.DB_HOST || "localhost", 
+  username: process.env.DB_USER || "root", 
+  password: process.env.DB_PASSWORD || "password", 
+  database: process.env.DB_NAME || "listas", 
+  logging: false // Puedes habilitarlo si quieres ver las consultas SQL
 });
 
 module.exports = sequelize;

@@ -1,4 +1,4 @@
-const { Card } = require("../models");
+const { Card } = require("../models/Card");
 
 exports.deleteCard = async (req, res) => {
   try {

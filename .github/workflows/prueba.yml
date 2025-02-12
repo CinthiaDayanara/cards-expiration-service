@@ -50,7 +50,7 @@ jobs:
               --env DB_SERVER=${{ secrets.DB_HOST }} \
               --env DB_NAME=${{ secrets.DB_NAME }} \
               -p 5011:5011 \
-              ${{ secrets.DOCKER_USERNAME }}/ccards-expiration-service:latest
+              ${{ secrets.DOCKER_USERNAME }}/cards-expiration-service:latest
 
             echo "✅ Despliegue completado con éxito."
 
